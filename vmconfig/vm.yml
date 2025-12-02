@@ -1,7 +1,7 @@
 apiVersion: kubevirt.io/v1
 kind: VirtualMachine
 metadata:
-  name: rhel-10-vm-1
+  name: rhel-10-vm-2
   namespace: michalp3
 spec:
   runStrategy: Always
