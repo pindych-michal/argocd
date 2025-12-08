@@ -1,6 +1,14 @@
 
 # Architectire 
 
+Red Hat OpenShiftss networking architecture delivers a robust and scalable foundation for containerized applications. Services provide load balancing based on pod selectors, while routes expose 
+these services to external networks. This architecture is well-suited for cloud-native microservices.
+However, applications running as virtual machines on OpenShift Virtualization may require different networking considerations. 
+Organizations with existing server management infrastructure often expect direct, unrestricted access to virtual machines. The standard Services and Routes model, 
+while effective for containerized workloads, may not fully address the networking requirements of VM-based workloads that rely on traditional network access patterns.
+
+
+
 Assumption 
 - VM should have 1 interface (bridge ovn or linux) if possible - no need for additional interfaces
 - If for some reason VM will have POD interfacves - it should be placed in user defined network (static IP) 
