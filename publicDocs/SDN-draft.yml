@@ -1,7 +1,7 @@
 
 # Architectire 
 
-Red Hat OpenShiftss networking architecture delivers a robust and scalable foundation for containerized applications. Services provide load balancing based on pod selectors, while routes expose 
+Red Hat OpenShifts networking architecture delivers a robust and scalable foundation for containerized applications. Services provide load balancing based on pod selectors, while routes expose 
 these services to external networks. This architecture is well-suited for cloud-native microservices.
 However, applications running as virtual machines on OpenShift Virtualization may require different networking considerations. 
 Organizations with existing server management infrastructure often expect direct, unrestricted access to virtual machines. The standard Services and Routes model, 
@@ -184,7 +184,8 @@ https://grok.com/share/bGVnYWN5LWNvcHk_b0914f36-0fbb-439e-b856-199dcd18ce63
 ------------------------------------------
 ## Generic Terms 
 
-Container Network Interface (CNI) - Is a standard specification and set of libraries that enables different container network providers to plug into Kubernetes, handling essential tasks like assigning IP addresses to pods, setting up network connectivity, and managing network resource.
+Container Network Interface (CNI) - Is a standard specification and set of libraries that enables different container network providers to plug into Kubernetes, 
+handling essential tasks like assigning IP addresses to pods, setting up network connectivity, and managing network resource.
 
 OVN Kubernetes
 
