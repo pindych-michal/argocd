@@ -1,0 +1,278 @@
+
+# Architectire 
+
+Assumption 
+- VM should have 1 interface (bridge ovn or linux) if possible - no need for additional interfaces
+- If for some reason VM will have POD interfacves - it should be placed in user defined network (static IP) 
+
+Migration approach
+- Lift and shift - investigate if in this approach we need POD networking ? If yes can we replace POD networking with User Defined Networking ?
+waht really is the role of the POD interface ? 
+
+By default, pods/VMs get one network interface (the cluster's internal network)
+OpenShift provides the following CNI plug-ins for the Multus CNI plug-in to chain:
+The Five Main CNI Plug-in Types:
+- Brdige
+- Host-Device
+- IPVLAN
+- MACVLAN
+- SR-IOV 
+
+
+Two types of accessing openshift resources from external world
+- Kubernetes native (ingress/routes, NodePort, MetaLLB)
+- Virtual machine native (bridging, routing, dedicate physical interface )
+
+
+Three types of Virtual Machine networks:
+- bridge types  (Vmware portgroups)
+- routing type  (Vmware segmetns and T1/T0 distributed routers)
+- dedicateed physical connection 
+
+## Direct access to the VM using OVN bridegs 
+
+## Direct access to the VM using Linux bridegs 
+
+## Direct access to the VM using distributed OVN routing
+
+## Direct access using dedicated host physical interface 
+
+## Security 
+
+
+
+
+
+
+
+
+# Configuration 
+
+## Direct access to the VM using OVN bridegs 
+
+
+Node Network Configuration Policy   (shared interface) 
+
+```
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: br-ex-network
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/worker: '' 
+  desiredState:
+    ovn:
+      bridge-mappings:
+      - localnet: br-ex-network
+        bridge: br-ex 
+        state: present
+
+```
+
+
+Node Network Configuration Policy (dedicated interfaces) 
+
+```
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: localnet-network
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/worker: ""
+	
+  desiredState:
+    interfaces:
+    - name: br0
+      bridge:
+        options: {}
+        port:
+        - name: ens192
+      ipv4:
+        dhcp: "false"
+        enabled: "false"
+      state: up
+      type: ovs-bridge	  
+    ovn:
+      bridge-mappings:
+      - localnet: localnet-network       
+		bridge: br0
+        state: present
+```
+
+ovs-vsctl set bridge br0 stp_enable=false
+
+https://grok.com/share/bGVnYWN5LWNvcHk_5c577409-dc58-4dc7-ab7a-064192dd3f88
+
+Network attachment definition 
+```
+
+spec:
+  config: |-
+    {
+        "cniVersion": "0.3.1",
+        "name": "br-ex-network"",
+        "type": "ovn-k8s-cni-overlay",
+        "netAttachDefName": "michalp/a559772",
+        "topology": "layer2"
+    }
+	
+spec:
+  config: |-
+    {
+        "cniVersion": "0.4.0",
+        "name": "br-ex-network",
+        "type": "ovn-k8s-cni-overlay",
+        "netAttachDefName": "michalp/a559772-2",
+        "topology": "localnet"
+    }
+# check diffrtent cniVersion, why is that ? 
+```
+
+
+## Direct access to the VM using Linux bridegs 
+
+Node Network Configuration Policy 
+
+
+```
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: br-flat
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/worker: ""
+  desiredState:
+    interfaces:
+      - name: br-flat
+        description: Linux bridge with enp11s0 as a port
+        type: linux-bridge
+        state: up
+        ipv4:
+          dhcp: false
+          enabled: false
+        bridge:
+          options:
+            stp:
+              enabled: false
+          port:
+            - name: enp11s0
+```
+
+https://grok.com/share/bGVnYWN5LWNvcHk_b0914f36-0fbb-439e-b856-199dcd18ce63
+
+
+## Direct access to the VM using distributed OVN routing 
+
+## Direct access using dedicated host physical interface 
+
+## Security
+
+
+# Glossary 
+
+------------------------------------------
+## Generic Terms 
+
+Container Network Interface (CNI) - Is a standard specification and set of libraries that enables different container network providers to plug into Kubernetes, handling essential tasks like assigning IP addresses to pods, setting up network connectivity, and managing network resource.
+
+OVN Kubernetes
+
+Open vSwitch (OVS) 
+
+Multus - Is a container network interface (CNI) plugin for Kubernetes that enables attaching multiple network interfaces to pods.
+
+Operator 
+
+Custom resource definition (CRD)
+
+-------------------------------------------
+Kubernetise networking terms terms 
+
+Services 
+- ClusterIP
+- Load Balancer
+- NodePort
+- ExternalkName
+- Headless
+
+Routes 
+
+Ingress 
+
+Network Policies 
+
+
+
+
+
+
+-------------------------------------------
+## Virtualization networking terms terms 
+
+NMSTAE operator - Manage the network configuration of the cluster nodes themselves in a declarative, Kubernetes-native way.
+
+Node network configuration policy (NNCP)
+
+Node network configuration enactment (NNCE) 
+
+Network Attachment Definition (NAD) - Describes how to attach an additional network interface to a pod or VM.
+
+User Defined Network (UDN)
+
+Cluster User Defined Network (CUDN)
+
+--------------------------------------------
+
+# Trobuelshooting  
+
+
+0. Global networking trubleshooting
+
+```
+oc get network/cluster -o yaml
+
+```
+
+2. Access direcly to the worker nodes
+
+```
+oc get nodes
+oc debug node/worker1.dev-ocp.openshift.local
+```
+
+2. Basic network troubleshooting on worker nodes
+
+
+
+3. Applaying nncp
+
+```
+oc.exe apply -f ovn-bridge.yml
+oc.exe apply -f linux-bridge.yml
+oc get nnce
+oc get nncp
+
+```
+
+5. Troubleshooting PODs 
+
+```
+oc.exe get vmi -o wide 
+oc.exe exec -it virt-launcher-rhel-10-turquoise-wombat-53-52jwb -- bin/bash
+virtctl.exe console windows-2k25-black-alpaca-86
+```
+
+
+
+# Links 
+
+Official redhat documeantion: 
+
+https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html-single/virtualization/index#virt-connecting-vm-to-ovn-secondary-network
+
+
+
+
