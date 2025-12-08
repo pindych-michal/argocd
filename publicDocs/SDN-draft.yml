@@ -315,3 +315,12 @@ worker2:
 
 ## After change 
 
+worker1:
+- Network adapter 1  - openshift-1  - openshift mapped to phy end192  - 
+- 
+
+worker2:
+- Network adapter 1  - openshift-1 - openshift mapped to phy  ens192  - 
+- 
+
+
