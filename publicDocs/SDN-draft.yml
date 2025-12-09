@@ -304,7 +304,7 @@ Nmstate operator configuration examples:
 
 https://nmstate.io/examples.html#nmstate-state-examples
 
-Openshift examples: 
+Openshift examples (good section for troubleshooting): 
 
 https://examples.openshift.pub/kubevirt/networking/
 
