@@ -224,25 +224,15 @@ Operator
 Custom resource definition (CRD)
 
 -------------------------------------------
-Kubernetise networking terms terms 
+## Kubernetise networking terms 
 
-Services 
-- ClusterIP
-- Load Balancer
-- NodePort
-- ExternalkName
-- Headless
+Services - (Service types: ClusterIP, Load Balancer, NodePort, ExternalkName, Headless )
 
 Routes 
 
 Ingress 
 
 Network Policies 
-
-
-
-
-
 
 -------------------------------------------
 ## Virtualization networking terms terms 
