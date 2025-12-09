@@ -312,14 +312,10 @@ Openshift Virtualziation cookbook  (good section for troubleshooting):
 
 https://redhatquickcourses.github.io/ocp-virt-cookbook/ocp-virt-cookbook/1/networking/index.html
 
-
 Youtube videos: 
 
 - https://www.youtube.com/watch?v=vqhJokrTzbs
 - https://www.youtube.com/watch?v=RWjvzNH1d0A
-
-
-
 
 # Links general 
 
@@ -359,7 +355,21 @@ https://meatybytes.io/posts/openshift/ocp-features/overview/core-foundations/net
 
 https://medium.com/@yakovbeder/mastering-openshift-multi-networking-a-deep-dive-into-udn-and-cudn-912339b3e813   (UDN) - DONE !!! 
 
+Openshift Virtualziation cookbook  (good section for troubleshooting): 
 
+https://redhatquickcourses.github.io/ocp-virt-cookbook/ocp-virt-cookbook/1/networking/index.html
+
+https://github.com/RedHatQuickCourses/
+
+- openshift-virt-roadshow-partner-converg
+- architect-the-ocpvirt
+- ocpvirt-migration
+- rhoso-arch
+- rhoso-intro
+- map-vSphere-ocpvirt
+- devspaces-plugins
+
+https://redhatquickcourses.github.io/
 
 Youtube videos:
 
