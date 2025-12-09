@@ -8,6 +8,14 @@ Organizations with existing server management infrastructure often expect direct
 while effective for containerized workloads, may not fully address the networking requirements of VM-based workloads that rely on traditional network access patterns.
 
 
+IPAM Options:
+
+- OVN-Kubernetes IPAM: Automatic IP allocation from defined subnets
+- External DHCP: Use existing DHCP servers
+- Cloud-init: Static IP configuration in VM images
+- Disabled: Manual IP configuration after deployment
+
+
 
 Explanation if VM can have only one network interface: 
 
