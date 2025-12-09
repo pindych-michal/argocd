@@ -282,7 +282,7 @@ virtctl.exe console windows-2k25-black-alpaca-86
 
 
 
-# Links 
+# Links specyfic 
 
 Official redhat documeantion: 
 
@@ -300,19 +300,49 @@ OVN brdige setup:
 
 https://blog.epheo.eu/articles/openshift-localnet/index.html
 
+
+
+
+
+# Links general 
+
 Nmstate operator configuration examples:
 
 https://nmstate.io/examples.html#nmstate-state-examples
 
-Openshift examples (good section for troubleshooting): 
+Openshift examples: 
 
 https://examples.openshift.pub/kubevirt/networking/
 
 https://examples.openshift.pub/
 
-Openshift Virtualziation cookbook: 
+Openshift Virtualziation cookbook  (good section for troubleshooting): 
 
 https://redhatquickcourses.github.io/ocp-virt-cookbook/ocp-virt-cookbook/1/networking/index.html
+
+OVN Kuberneties:
+
+https://ovn-kubernetes.io/
+
+https://docs.ovn.org/_/downloads/en/latest/pdf/
+
+MetaLB Configuration:
+
+https://myopenshiftblog.com/openshift-virtualization-networking-101-routes-and-metallb-to-load-balance-vms/
+
+OKD networking documetnation:
+
+https://docs.okd.io/4.19/networking/networking_overview/understanding-networking.html
+
+NSX-T to OVN comparasion: 
+https://cloud.redhat.com/learning/learn:high-level-guide-red-hat-openshift-virtualization-vmware-admin/resource/resources:understanding-red-hat-openshift-networking-options-vmware-admin
+
+
+
+
+
+
+
 
 
 Youtube videos: 
