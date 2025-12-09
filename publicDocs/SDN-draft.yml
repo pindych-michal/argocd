@@ -9,6 +9,11 @@ while effective for containerized workloads, may not fully address the networkin
 
 
 
+Explanation if VM can have only one network interface: 
+https://claude.ai/public/artifacts/6e3bba52-ef44-48af-a284-37b907d66d15
+
+
+
 Assumption 
 - VM should have 1 interface (bridge ovn or linux) if possible - no need for additional interfaces
 - If for some reason VM will have POD interfacves - it should be placed in user defined network (static IP) 
