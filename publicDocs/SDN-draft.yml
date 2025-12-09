@@ -51,6 +51,18 @@ Three types of Virtual Machine networks:
 - routing type  (Vmware segmetns and T1/T0 distributed routers)
 - dedicateed physical connection 
 
+
+| OpenShift Virtualization menu item | VMware comparable                   | Explanation                                                                                                                                                                      |
+|------------------------------------|--------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| NodeNetworkConfigurationPolicy<br>(NMState Operator needed) | vSwitch/DvSwitch                     | Desired network configuration on cluster nodes                                                                                                                                   |
+| NodeNetworkState<br>(NMState Operator needed) | Similar to vSwitch/DvSwitch view at ESX/vCenter | Network status on nodes                                                                                                                                                         |
+| Service                            | N/A                                  | Layer4 load balancing configurations with self-discovery and automatic DNS internal to the SDN. Combined with ingress LB solutions (MetalLB, cloud LB) to expose services outside the cluster |
+| Routes and Ingresses               | NSX Load Balancer                    | **Routes:** Application load balancing configurations to expose web services outside the cluster<br>**Ingresses:** Accessing application with unique hostname                     |
+| NetworkPolicy                      | NSX-T Firewall (Microsegmentation Rules) | Manage application-centric network policies                                                                                                                                      |
+| NetworkAttachmentDefinitions       | Port Groups                          | Virtual machine connectivity to networks (VLANs, private networks, etc.)                                                                                                        |
+| UserDefinedNetwork                 | NSX-T Overlay Segments               | Create and manage overlay network segments                                                                                                                                       |
+
+
 ## Direct access to the VM using OVN bridegs 
 
 ## Direct access to the VM using Linux bridegs 
