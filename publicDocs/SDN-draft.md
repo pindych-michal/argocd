@@ -394,27 +394,9 @@ https://www.youtube.com/watch?v=BMLmHgYYfDI
 
 
 
-# Byd envirometn setup 
+# IPAM
 
+https://chatgpt.com/share/694005bb-c8ec-800a-8098-65eaab0ad234
 
-## Before chagne 
-
-worker1:
-- Network adapter 1  - openshift-1  - openshift mapped to phy end192  - 
-
-
-worker2:
-- Network adapter 1  - openshift-1 - openshift mapped to phy  ens192  - 
-
-
-## After change 
-
-worker1:
-- Network adapter 1  - openshift-1  - openshift mapped to phy end192  - 
-- 
-
-worker2:
-- Network adapter 1  - openshift-1 - openshift mapped to phy  ens192  - 
-- 
 
 
