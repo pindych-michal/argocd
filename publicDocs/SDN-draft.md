@@ -16,6 +16,9 @@ IPAM Options:
 - Disabled: Manual IP configuration after deployment
 
 
+Physical connection consideration 
+- 1 bound interfaces
+- 2 bound interface (1 dedicated for VM worklaod ) 
 
 Explanation if VM can have only one network interface: 
 
