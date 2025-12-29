@@ -1,8 +1,0 @@
-apiVersion: project.openshift.io/v1
-kind: Project
-metadata:
-  name: test-project
-  annotations:
-    openshift.io/description: "test-project"
-    openshift.io/display-name: "test-project"
-    openshift.io/requester: "A559772"  # Optional: records who requested it
