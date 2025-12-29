@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dummy-test
+  namespace: m1
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: dummy
+  template:
+    metadata:
+      labels:
+        app: dummy
+    spec:
+      containers:
+      - name: pause
+        image: k8s.gcr.io/pause:3.9
+        resources:
+          limits:
+            cpu: "1m"
+            memory: "4Mi"
