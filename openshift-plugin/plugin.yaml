@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ConfigManagementPlugin
+metadata:
+  name: openshift-plugin
+spec:
+  version: v1.0.0
+  # Discover if this plugin should handle the application
+  discover:
+    find:
+      glob: "**/.openshift-plugin"
+  # Generate manifests
+  generate:
+    command:
+      - openshift-plugin
+      - generate
